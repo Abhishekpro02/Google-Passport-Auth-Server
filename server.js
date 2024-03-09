@@ -19,12 +19,12 @@ const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
 // cors policy for development
-// app.use(
-//   cors({
-//     origin: "https://abhi-github-auth.vercel.app",
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://google-passport-auth-client.vercel.app",
+    credentials: true,
+  })
+);
 const oneWeek = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 app.use(
   session({
@@ -33,9 +33,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: oneWeek,
-      sameSite: false,
-      secure: false,
-      httpOnly: false,
+      sameSite: "none",
+      secure: true,
+      httpOnly: true,
     },
   })
 );
